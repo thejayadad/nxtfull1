@@ -8,11 +8,13 @@ export default function Home({posts}) {
       <Navbar />
       <main>
         <div>
-          {posts.length === 0} ? (
+          {posts.length === 0 ? (
             <h2>No Added Posts</h2>
           ) : (
-
-          )
+            <div>
+              {posts}
+            </div>
+          )}
         </div>
       </main>
     </div>
