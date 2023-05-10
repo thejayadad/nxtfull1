@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-
+import PostCard from "@/components/PostCard";
 
 export default function Home({posts}) {
   return (
@@ -11,9 +11,11 @@ export default function Home({posts}) {
           {posts.length === 0 ? (
             <h2>No Added Posts</h2>
           ) : (
-            <div>
-              {posts}
-            </div>
+            <ul>
+              {posts.map((post,i) => (
+                <PostCard post={post} key={i} />
+              ))}
+            </ul>
           )}
         </div>
       </main>
@@ -28,7 +30,7 @@ export async function getServerSideProps(){
   let dev = process.env.NODE_ENV !== 'production';
   let {DEV_URL} = process.env;
 
-  let response = await fetch(`${DEV_URL}/api/posts`)
+  let response = await fetch(`${dev}/api/posts`)
 
   let data = await response.json()
 

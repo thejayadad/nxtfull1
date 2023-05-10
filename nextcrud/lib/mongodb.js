@@ -16,7 +16,7 @@ if(!MONGODB_DB){
 let cachedClent = null
 let cacheDb = null
 
-export async function connectTodatabase(){
+export async function connectToDatabase(){
     if(cachedClent && cacheDb){
         return {
             client:cachedClent,
@@ -25,7 +25,6 @@ export async function connectTodatabase(){
     }
     const opts = {
         useNewUrlParser:true,
-        undefinedTopology:true
     }
     let client = new MongoClient(MONGODB_URI,opts)
     await client.connect()
